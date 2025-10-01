@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdhjb3etgthdl"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_keo14"]
+[ext_resource type="Texture2D" uid="uid://b0ygcilypqd86" path="res://Платформер/Map/Tilemap/Tiles/i (1).webp" id="1_wfqm4"]
+[ext_resource type="Texture2D" uid="uid://bgx7iar0pmk3e" path="res://Платформер/1.png" id="2_ntj8t"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_keo14")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="win" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(582, 328.25)
+scale = Vector2(1.20417, 0.91875)
+texture = ExtResource("1_wfqm4")
+
+[node name="lose" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(579, 329)
+scale = Vector2(2.62727, 1.49091)
+texture = ExtResource("2_ntj8t")
+
+[node name="restart" type="Button" parent="CanvasLayer"]
+offset_left = 428.0
+offset_top = 449.0
+offset_right = 736.0
+offset_bottom = 512.0
+theme_override_colors/font_color = Color(0.384851, 0.660952, 0.454344, 1)
+theme_override_font_sizes/font_size = 40
+text = "Начать заново"
+
+[node name="exit" type="Button" parent="CanvasLayer"]
+offset_left = 510.0
+offset_top = 549.0
+offset_right = 651.0
+offset_bottom = 612.0
+theme_override_colors/font_color = Color(0.384314, 0.662745, 0.454902, 1)
+theme_override_font_sizes/font_size = 40
+text = "Выйти"
+
+[connection signal="pressed" from="CanvasLayer/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://dhxdpykhnjjeu"]
+
+[ext_resource type="Texture2D" uid="uid://bayichn8gpx23" path="res://Платформер/Characters/creature-sheet.png" id="1_ao84x"]
+[ext_resource type="Script" path="res://player.gd" id="1_wfwmk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5et1"]
+atlas = ExtResource("1_ao84x")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lfjw"]
+atlas = ExtResource("1_ao84x")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x3pa"]
+atlas = ExtResource("1_ao84x")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueh71"]
+atlas = ExtResource("1_ao84x")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kab8r"]
+atlas = ExtResource("1_ao84x")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7m1i"]
+atlas = ExtResource("1_ao84x")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwg3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5et1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lfjw")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x3pa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueh71")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kab8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7m1i")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ohwq"]
+radius = 11.0
+height = 24.0
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_wfwmk")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pwg3d")
+animation = &"run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1ohwq")

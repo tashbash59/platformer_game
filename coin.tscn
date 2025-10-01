@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dk0mr4ta5kyc8"]
+
+[ext_resource type="Script" path="res://coin.gd" id="1_5ylua"]
+[ext_resource type="Texture2D" uid="uid://bgfbjbagrt5kq" path="res://Платформер/Map/Tilemap/Tiles/tile_0151.png" id="2_aexga"]
+[ext_resource type="Texture2D" uid="uid://67foc3u0ifyu" path="res://Платформер/Map/Tilemap/Tiles/tile_0152.png" id="3_hwne8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2g0i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aexga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hwne8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6ime"]
+radius = 5.0
+
+[node name="coin" type="Area2D" groups=["coin"]]
+script = ExtResource("1_5ylua")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w2g0i")
+frame_progress = 0.920564
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x6ime")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
